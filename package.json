@@ -1,12 +1,20 @@
 {
   "name": "grid",
   "version": "1.0.0",
-  "description": "",
   "main": "grid.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Mike Duffey <mpduffey@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpduffey/grid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mpduffey/grid/issues"
+  },
+  "homepage": "https://github.com/mpduffey/grid#readme",
+  "description": ""
 }
