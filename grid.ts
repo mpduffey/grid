@@ -1,15 +1,30 @@
 import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
-	selector:					'grid',
-	inputs:						['rows: rows', 'columns: columns'],
-	templateUrl:			'app/components/grid/grid.html',
-	styles:						[`
+	selector:			'grid',
+	inputs:				['rows: rows', 'columns: columns'],
+	template:	`
+		<div showOptions="true">Records: 
+			<select>
+				<option value="10">10</option>
+				<option value="25">25</option>
+				<option value="50">50</option>
+			</select>
+		</div>
+		<table class="table table-striped table-condensed">
+			<thead><tr><td *ngFor="let col of columns"><a (click)="sort(col.name)">{{col.descr}}</a></td></tr></thead>
+			<tbody><tr *ngFor="let row of rows"><td *ngFor="let col of columns">{{row[col.name]}}</td></tr></tbody>
+		</table>
+	`,
+	styles:				[`
 		table {
 			font-size: 12px;
 		}
 		thead td {
 			cursor: pointer;
+		}
+		select {
+			color: black;
 		}
 	`],
 	changeDetection:	ChangeDetectionStrategy.OnPush
@@ -19,6 +34,7 @@ export class Grid {
     columns:Array<Column>;
     rows:Array<any>;
     @Input() name:string;
+		@Input("show-options") showOptions = false;
     sorter = new Sorter();
     sort(key){
         this.sorter.sort(key, this.rows);
