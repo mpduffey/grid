@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var Grid = (function () {
     function Grid() {
-        this.showOptions = false;
+        this.showPageSize = false;
         this.sorter = new Sorter();
     }
     Grid.prototype.sort = function (key) {
@@ -22,14 +22,14 @@ var Grid = (function () {
         __metadata('design:type', String)
     ], Grid.prototype, "name", void 0);
     __decorate([
-        core_1.Input("show-options"), 
+        core_1.Input("show-page-size"), 
         __metadata('design:type', Object)
-    ], Grid.prototype, "showOptions", void 0);
+    ], Grid.prototype, "showPageSize", void 0);
     Grid = __decorate([
         core_1.Component({
             selector: 'grid',
             inputs: ['rows: rows', 'columns: columns'],
-            template: "\n\t\t<div showOptions=\"true\">Records: \n\t\t\t<select>\n\t\t\t\t<option value=\"10\">10</option>\n\t\t\t\t<option value=\"25\">25</option>\n\t\t\t\t<option value=\"50\">50</option>\n\t\t\t</select>\n\t\t</div>\n\t\t<table class=\"table table-striped table-condensed\">\n\t\t\t<thead><tr><td *ngFor=\"let col of columns\"><a (click)=\"sort(col.name)\">{{col.descr}}</a></td></tr></thead>\n\t\t\t<tbody><tr *ngFor=\"let row of rows\"><td *ngFor=\"let col of columns\">{{row[col.name]}}</td></tr></tbody>\n\t\t</table>\n\t",
+            template: "\n\t\t<div *ngIf=\"showPageSize\">Records: \n\t\t\t<select>\n\t\t\t\t<option value=\"10\">10</option>\n\t\t\t\t<option value=\"25\">25</option>\n\t\t\t\t<option value=\"50\">50</option>\n\t\t\t</select>\n\t\t</div>\n\t\t<table class=\"table table-striped table-condensed\">\n\t\t\t<thead><tr><td *ngFor=\"let col of columns\"><a (click)=\"sort(col.name)\">{{col.descr}}</a></td></tr></thead>\n\t\t\t<tbody><tr *ngFor=\"let row of rows\"><td *ngFor=\"let col of columns\">{{row[col.name]}}</td></tr></tbody>\n\t\t</table>\n\t",
             styles: ["\n\t\ttable {\n\t\t\tfont-size: 12px;\n\t\t}\n\t\tthead td {\n\t\t\tcursor: pointer;\n\t\t}\n\t\tselect {\n\t\t\tcolor: black;\n\t\t}\n\t"],
             changeDetection: core_1.ChangeDetectionStrategy.OnPush
         }), 

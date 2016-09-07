@@ -4,7 +4,7 @@ import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 	selector:			'grid',
 	inputs:				['rows: rows', 'columns: columns'],
 	template:	`
-		<div showOptions="true">Records: 
+		<div *ngIf="showPageSize">Records: 
 			<select>
 				<option value="10">10</option>
 				<option value="25">25</option>
@@ -34,7 +34,7 @@ export class Grid {
     columns:Array<Column>;
     rows:Array<any>;
     @Input() name:string;
-		@Input("show-options") showOptions = false;
+		@Input("show-page-size") showPageSize = false;
     sorter = new Sorter();
     sort(key){
         this.sorter.sort(key, this.rows);
